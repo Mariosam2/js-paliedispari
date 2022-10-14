@@ -22,6 +22,7 @@ const testsArray = [
     'Ingegni',
     ' ',
     'Ada Idi',
+    'Ada Ada',
 ]
 console.log(test(testsArray));
 
@@ -29,7 +30,8 @@ console.log(test(testsArray));
 function test (stringsArray){
     for(let i = 0; i < stringsArray.length; i++){
         //console.log(stringsArray[i]);
-        isPalindrome(stringsArray[i]);
+        const word = stringsArray[i];
+        isPalindrome(word);
     }
 }
 // creazione dei metodi
@@ -39,11 +41,12 @@ function isPalindrome(word) {
     //console.log(word);
     // percorro la stringa da destra verso sinistra
     for(let i = word.length - 1; i >= 0; i--){
-        console.log(word[i].toString());
+        //console.log(word[i].toString());
         rightToLeftWord += word[i];
     }
     word.trim();
     rightToLeftWord.trim();
+    console.log(word, rightToLeftWord)
 
     if(word === rightToLeftWord){
         console.log('palindromo')

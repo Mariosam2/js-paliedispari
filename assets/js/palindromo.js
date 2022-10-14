@@ -138,5 +138,5 @@ function testPalindromeReverse(word){
 }
 
 function testPalindromeSplitJoin(word){
-    return isPalindrome */SplitJoin(word);
-}
+    return isPalindrome SplitJoin(word);
+}*/

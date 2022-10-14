@@ -4,45 +4,56 @@ L’utente sceglie pari o dispari e inserisce un numero da 1 a 5. Generiamo un n
 
 // Prendo la parola come stringa dall'utente la leggo da destra verso sinistra in un loop "al contrario", salvo la stringa e la confronto con la stringa data dall'utente
 
+//Strumenti
 //prompt
+//Number()
+//document.createElement()
 //function
 //for loop
 //string methods 
-//reverse
+//reverse()
 
-/* const userWord = prompt('Inserisci una parola'); 
 
-if(isPalindrome(userWord)){
-    
-} */
+const container = document.querySelector('.container');
+//const userWord = prompt('Inserisci una parola'); 
+//const userEvenOdd = prompt('Inserisci "pari" o "dispari"');
+//const userNum = Number(prompt('Inserisci un numero'));
+
+const boxEl = document.createElement('li');
+boxEl.classList.add('box');
+container.append(boxEl);
+// userò solo la soluzione 1
+if(isPalindrome("ciao")){
+    boxEl.innerHTML = "La parola inserita è palindromo";
+} else {
+    boxEl.innerHTML = "La parola inserita non è palindromo";
+}
 
 // creazione dei metodi
 //soluzione 1
 function isPalindrome(word) {
     // case insesitive
     word = word.toLocaleLowerCase();
-    let reversedWord = '';
     //console.log(word);
+    // rimozione degli spazi
+    word = word.replace(' ','');
+    // controllo che la parola inserita non sia vuota
+    if(word === ''){
+        return false;
+    }
+    let reversedWord = '';
     // percorro la stringa da destra verso sinistra
     for(let i = word.length - 1; i >= 0; i--){
         //console.log(word[i].toString());
         reversedWord += word[i];
     }
-    // rimozione degli spazi
-    word = word.replace(' ','');
-    if(word === ''){
-        return false;
-    }
-    reversedWord =reversedWord.replace(' ','');
     //console.log(word,reversedWord)
     // controllo se la parola è palindromo
     if(word === reversedWord){
         return true;
         
-    } else {
-        return false;
-       
-    }
+    } 
+    return false;
 }
 // soluzione 2 reverse()
 function isPalindromeReverse (string){
@@ -53,13 +64,14 @@ function isPalindromeReverse (string){
         word.push(string[i].toLocaleLowerCase());
     }
     // rimozione degli spazi
-    const resultWord = word.filter(element => element !== ' ' );
+    const resultWord = word.filter(element => element !== ' ');
+    // controllo che la parola inserita non sia vuota
     if (resultWord.length === 0){
         return false;
     }
     // inversione della parola
-    let reversedWord = word.filter(element => element !== ' ' ).reverse();
-    //console.log(resultWord, reversedWord);
+    const reversedWord =  word.filter(element => element !== ' ').reverse();
+    //console.log(resultWord, reversedWord); 
     // controllo se la parola è palindromo
     for (let i = 0; i < resultWord.length; i++) {
         if(resultWord[i] !== reversedWord[i]){
@@ -70,6 +82,27 @@ function isPalindromeReverse (string){
     return true;
     
 }
+
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max) + min;
+}
+
+function isEvenOddGame(string, num){
+    //genero un numero random
+    const randomNum = Math.floor(getRandomArbitrary(1,5));
+    console.log(randomNum);
+    //calcolo la somma
+    const sum = randomNum + num;
+    console.log(sum)
+    if(string.toLocaleLowerCase() === "pari" && sum % 2 == 0){
+        return true;
+    }
+    return false;
+
+}
+
+
+
 
 
 
@@ -92,7 +125,8 @@ function isPalindromeReverse (string){
 
 
 for(let i = 0; i < testsArray.length; i++){
-     console.log( testPalindrome(testsArray[i]), testPalindromeReverse(testsArray[i]));
+     const testWord = testsArray[i];
+     console.log(testPalindrome(testWord), testPalindromeReverse(testWord);
 }
 
 function testPalindrome(word){

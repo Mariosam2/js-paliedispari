@@ -15,18 +15,24 @@ L’utente sceglie pari o dispari e inserisce un numero da 1 a 5. Generiamo un n
 
 
 const container = document.querySelector('.container');
-//const userWord = prompt('Inserisci una parola'); 
-//const userEvenOdd = prompt('Inserisci "pari" o "dispari"');
-//const userNum = Number(prompt('Inserisci un numero'));
+const userWord = prompt('Inserisci una parola'); 
+const userEvenOdd = prompt('Inserisci "pari" o "dispari"');
+const userNum = Number(prompt('Inserisci un numero da 1 a 5'));
 
-const boxEl = document.createElement('li');
+const boxEl = document.createElement('div');
 boxEl.classList.add('box');
 container.append(boxEl);
 // userò solo la soluzione 1
-if(isPalindrome("ciao")){
-    boxEl.innerHTML = "La parola inserita è palindromo";
+if(isPalindrome(userWord)){
+    boxEl.innerHTML = "La parola inserita è palindromo" + "<br>";
 } else {
-    boxEl.innerHTML = "La parola inserita non è palindromo";
+    boxEl.innerHTML = "La parola inserita non è palindromo" + "<br>";
+}
+
+if(isEvenOddGame(userEvenOdd, userNum)){
+    boxEl.innerHTML += "Hai vinto" + "<br>";
+} else {
+    boxEl.innerHTML += "Hai perso" + "<br>";
 }
 
 // creazione dei metodi
@@ -44,7 +50,7 @@ function isPalindrome(word) {
     let reversedWord = '';
     // percorro la stringa da destra verso sinistra
     for(let i = word.length - 1; i >= 0; i--){
-        //console.log(word[i].toString());
+        //console.log(word[i]);
         reversedWord += word[i];
     }
     //console.log(word,reversedWord)
@@ -96,8 +102,10 @@ function isEvenOddGame(string, num){
     console.log(sum)
     if(string.toLocaleLowerCase() === "pari" && sum % 2 == 0){
         return true;
+    } else if(string.toLocaleLowerCase() === "dispari" && sum % 2 != 0) {
+        return true;
     }
-    return false;
+    return false;    
 
 }
 

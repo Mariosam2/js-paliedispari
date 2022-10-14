@@ -18,7 +18,7 @@ const container = document.querySelector('.container');
 const userWord = prompt('Inserisci una parola'); 
 const userEvenOdd = prompt('Inserisci "pari" o "dispari"');
 const userNum = Number(prompt('Inserisci un numero da 1 a 5'));
-
+//creo elemento html
 const boxEl = document.createElement('div');
 boxEl.classList.add('box');
 container.append(boxEl);

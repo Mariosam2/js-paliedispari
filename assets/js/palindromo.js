@@ -91,7 +91,7 @@ function isPalindromeSplitJoin(word){
     }
     //inversione della parola
     let reversedWord = word.split('').reverse().join('');
-    console.log(word, reversedWord);
+    //console.log(word, reversedWord);
     // controllo se la parola è palindromo
     if(word === reversedWord){
         return true;

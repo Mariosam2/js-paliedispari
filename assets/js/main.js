@@ -7,11 +7,75 @@ L’utente sceglie pari o dispari e inserisce un numero da 1 a 5. Generiamo un n
 //prompt
 //function
 //for loop
-//string methods
+//string methods 
+//reverse
 
-/* const userWord = prompt('Inserisci una parola'); */
-//test array
-const testsArray = [
+/* const userWord = prompt('Inserisci una parola'); 
+
+if(isPalindrome(userWord)){
+    
+} */
+
+// creazione dei metodi
+//soluzione 1
+function isPalindrome(word) {
+    // case insesitive
+    word = word.toLocaleLowerCase();
+    let reversedWord = '';
+    //console.log(word);
+    // percorro la stringa da destra verso sinistra
+    for(let i = word.length - 1; i >= 0; i--){
+        //console.log(word[i].toString());
+        reversedWord += word[i];
+    }
+    // rimozione degli spazi
+    word = word.replace(' ','');
+    if(word === ''){
+        return false;
+    }
+    reversedWord =reversedWord.replace(' ','');
+    //console.log(word,reversedWord)
+    // controllo se la parola è palindromo
+    if(word === reversedWord){
+        return true;
+        
+    } else {
+        return false;
+       
+    }
+}
+// soluzione 2 reverse()
+function isPalindromeReverse (string){
+    // la parola è definita come un array di caratteri per poter usare il metodo reverse
+    let word = [];
+    // creazione della parola (case insensitive)
+    for(let i = 0; i < string.length; i++){
+        word.push(string[i].toLocaleLowerCase());
+    }
+    // rimozione degli spazi
+    const resultWord = word.filter(element => element !== ' ' );
+    if (resultWord.length === 0){
+        return false;
+    }
+    // inversione della parola
+    let reversedWord = word.filter(element => element !== ' ' ).reverse();
+    //console.log(resultWord, reversedWord);
+    // controllo se la parola è palindromo
+    for (let i = 0; i < resultWord.length; i++) {
+        if(resultWord[i] !== reversedWord[i]){
+            return false;
+        }
+    
+    }
+    return true;
+    
+}
+
+
+
+
+//test 
+/* const testsArray = [
     'Acca',
     'Ada',
     'Kayak',
@@ -24,35 +88,18 @@ const testsArray = [
     'Ada Idi',
     'Ada Ada',
 ]
-console.log(test(testsArray));
 
-//test method
-function test (stringsArray){
-    for(let i = 0; i < stringsArray.length; i++){
-        //console.log(stringsArray[i]);
-        const word = stringsArray[i];
-        isPalindrome(word);
-    }
-}
-// creazione dei metodi
-function isPalindrome(word) {
-    word = word.toLocaleLowerCase();
-    let rightToLeftWord = '';
-    //console.log(word);
-    // percorro la stringa da destra verso sinistra
-    for(let i = word.length - 1; i >= 0; i--){
-        //console.log(word[i].toString());
-        rightToLeftWord += word[i];
-    }
-    word.trim();
-    rightToLeftWord.trim();
-    console.log(word, rightToLeftWord)
 
-    if(word === rightToLeftWord){
-        console.log('palindromo')
-        
-    } else {
-        console.log('non palindromo')
-       
-    }
+
+for(let i = 0; i < testsArray.length; i++){
+     console.log( testPalindrome(testsArray[i]), testPalindromeReverse(testsArray[i]));
 }
+
+function testPalindrome(word){
+    return isPalindrome(word);
+    
+}
+
+function testPalindromeReverse(word){
+    return isPalindromeReverse(word);
+}  */

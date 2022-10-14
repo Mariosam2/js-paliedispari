@@ -51,6 +51,7 @@ function isPalindrome(word) {
         return true;
         
     } 
+
     return false;
 }
 // soluzione 2 reverse()
@@ -81,6 +82,24 @@ function isPalindromeReverse (string){
     
 }
 
+// soluzione 3 split() join() e reverse()
+function isPalindromeSplitJoin(word){
+    //case insesitive e rimozione spazi
+    word = word.replace(' ','').toLocaleLowerCase();
+    if(word === ''){
+        return false;
+    }
+    //inversione della parola
+    let reversedWord = word.split('').reverse().join('');
+    console.log(word, reversedWord);
+    // controllo se la parola è palindromo
+    if(word === reversedWord){
+        return true;
+        
+    } 
+
+    return false;
+}
 
 
 
@@ -106,7 +125,7 @@ function isPalindromeReverse (string){
 
 for(let i = 0; i < testsArray.length; i++){
      const testWord = testsArray[i];
-     console.log(testPalindrome(testWord), testPalindromeReverse(testWord);
+     console.log(testPalindromeSplitJoin(testWord));
 }
 
 function testPalindrome(word){
@@ -116,4 +135,8 @@ function testPalindrome(word){
 
 function testPalindromeReverse(word){
     return isPalindromeReverse(word);
-}  */
+}
+
+function testPalindromeSplitJoin(word){
+    return isPalindrome */SplitJoin(word);
+}
